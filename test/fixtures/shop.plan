@@ -1,0 +1,30 @@
+%syntax-version=1.0.0
+%project=shop
+%uri=https://example.com/shop/
+% custom-pragma = some value   # a pragma with a note
+%flag
+
+# A synthetic plan: every construct the parser knows, laid out unevenly.
+  #   an indented comment
+   	
+schema 2026-01-01T09:00:00Z Ada Lovelace <ada@example.com> # create the shop schema
+widgets [schema] 2026-01-01T09:05:00Z Ada Lovelace <ada@example.com> # widgets table
+orders [schema widgets] 2026-01-01T09:10:00Z Grace Hopper <grace@example.com> # orders, see issue #12
+order_lines [orders !legacy_lines] 2026-01-01T09:15:00Z Grace Hopper <grace@example.com>
+audit [payments:ledger payments:ledger@v2.0 !payments:old_ledger] 2026-01-02T10:00:00Z José Ñúñez Ørsted <jose@example.com> # cross-project dependencies
+@v1.0 2026-01-03T00:00:00Z Ada Lovelace <ada@example.com> # first release
+
+pricing [@v1.0 widgets@v1.0] 2026-01-04T08:00:00Z Ada Lovelace <ada@example.com> # depends on a tag and on a change at a tag
+orders [orders@v1.0 pricing] 2026-01-04T08:30:00Z Grace Hopper <grace@example.com> # rework orders; it now also needs pricing
+discounts  [ pricing   orders ]  2026-01-04T09:00:00Z   José Ñúñez Ørsted  <jose@example.com>  #  odd spacing  
+refunds 2026-01-04T09:30:00Z Ada Lovelace <ada@example.com>   
+shipping 2026-01-04T10:00:00Z Ada Lovelace <ada@example.com>#no space before the hash
+	returns	2026-01-04T10:30:00Z	Ada Lovelace <ada@example.com>	# tabs
+@v1.1 2026-01-05T00:00:00Z Grace Hopper <grace@example.com>
+widgets [widgets@v1.1] 2026-01-06T12:00:00Z Ada Lovelace <ada@example.com> # rework widgets
++invoices 2026-01-06T12:30:00Z Ada Lovelace <ada@example.com> # legacy deploy operator
+- legacy_lines 2026-01-06T13:00:00Z Ada Lovelace <ada@example.com> # legacy revert operator
+# a comment between changes
+orders [orders@v1.1 invoices] 2026-01-07T08:00:00Z José Ñúñez Ørsted <jose@example.com> # second rework, notes may hold # and ## too
+@v2.0 2026-01-08T00:00:00Z Ada Lovelace <ada@example.com> # release #2
+reports [orders widgets] 2026-01-09T08:00:00Z Grace Hopper <grace@example.com>
