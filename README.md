@@ -31,6 +31,8 @@ main = do
   `reworks`, `pragmaValue` / `projectName` / `uri`.
 - **Light**: depends on `base`, `text`, `containers` and `time` only.
 
+[sqint](https://github.com/kronor-io/sqint) reads plans with sqitch-plan. It is one of the tools Kronor uses to keep a PostgreSQL schema in sqitch, with [sqiff](https://github.com/kronor-io/sqiff), [create-migration](https://github.com/kronor-io/sqitch-with-templates) and [psql-retry](https://github.com/kronor-io/psql-retry). [sqitchcraft](https://kronor-io.github.io/sqitchcraft/) shows how they fit together: the repository layout they assume, one change from an edited file to a deploy, and instructions for coding agents.
+
 ## Install
 
 sqitch-plan is not on Hackage yet. Pin a commit from a `cabal.project`:
